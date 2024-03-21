@@ -47,6 +47,11 @@ class InstituteMiddleWare(MiddlewareMixin):
         hostname = self.hostname_from_request(request)
         db_settings = self.get_db_settings_for_subdomain(hostname)
         if db_settings:
+            db_aliases = db_settings.keys()
+            for key in connections.databases.keys():
+                if key not in db_aliases:
+                    del connections.databases[key]
+    
             for key, value in db_settings.items():
                 connections.databases[key].update(value)
             connection.close()
