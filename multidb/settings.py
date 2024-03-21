@@ -16,6 +16,7 @@ import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -56,7 +57,8 @@ DATABASE_ROUTERS = ("tenant_schemas.routers.TenantSyncRouter",)
 CACHES = {
     'default': {
         'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
-        'LOCATION': '/home/karthik/workspace/multidb/multidb/django_cache',
+        'LOCATION': BASE_DIR + '/django_cache',
+        'TIMEOUT': 999999
     }
 }
 
