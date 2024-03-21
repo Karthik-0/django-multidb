@@ -1,0 +1,26 @@
+<!-- blog_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog List</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto mt-8">
+        <h1 class="text-2xl font-bold mb-4">Blog List</h1>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {% for blog in blogs %}
+            <div class="bg-white p-4 shadow-md rounded-lg">
+                <h2 class="text-xl font-bold mb-2">{{ blog.title }}</h2>
+                <p class="text-gray-600">{{ blog.content }}</p>
+                {% if blog.institute %}
+                <p class="text-gray-500 mt-2">Institute: {{ blog.institute }}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html>
